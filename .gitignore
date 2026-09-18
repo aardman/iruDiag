@@ -1,0 +1,6 @@
+.build/
+IruDiag.app/
+IruDiag.pkg
+.pkgroot/
+.pkgscripts/
+.component.plist

@@ -27,7 +27,7 @@ chmod +x .build/ScriptExec
     -a "IruDiag" \
     -o "Status Menu" \
     -p /bin/bash \
-    -V "1.0" \
+    -V "1.0.0" \
     -u "Nathan Taylor" \
     -I "org.aardman.IruDiag" \
     -B \

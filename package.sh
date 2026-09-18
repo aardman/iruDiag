@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 APP_NAME="IruDiag.app"
 INSTALL_DIR="/Applications"
 IDENTIFIER="org.aardman.IruDiag.pkg"
-VERSION="1.0"
+VERSION="1.0.0"
 OUTPUT="IruDiag.pkg"
 
 if [ ! -d "$APP_NAME" ]; then
