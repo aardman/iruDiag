@@ -7,6 +7,8 @@ cask "irudiag" do
   desc "Menu bar diagnostics and maintenance tool for the Iru client agent"
   homepage "https://github.com/aardman/iruDiag"
 
+  depends_on :macos
+
   pkg "IruDiag.pkg"
 
   uninstall quit:    "org.aardman.IruDiag",
