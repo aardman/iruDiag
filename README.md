@@ -33,6 +33,22 @@ the other silently failed to elevate at all. The sudoers approach actually works
 
 ## Installing
 
+### Via Homebrew
+
+```
+brew tap aardman/iruDiag https://github.com/aardman/iruDiag
+brew install --cask irudiag
+```
+
+The explicit URL on `brew tap` is needed because this repo isn't named `homebrew-iruDiag` -
+Homebrew's short `brew tap aardman/iruDiag` form only looks for a repo with that exact
+prefix, so the URL tells it where to actually find this one.
+
+`brew uninstall --cask irudiag` removes the app, forgets the package receipt, and removes
+the sudoers drop-in.
+
+### Manually
+
 Download `IruDiag.pkg` from the [Releases](../../releases) page (or build it yourself, see
 below) and run:
 
@@ -67,6 +83,17 @@ confirm it still lands where you expect.
 * `install-sudoers.sh` - the same sudoers setup, standalone, for manual/local testing
   (`sudo bash install-sudoers.sh`)
 * `package.sh` - builds `IruDiag.pkg` from `IruDiag.app`
+* `Casks/irudiag.rb` - the Homebrew cask definition (this repo doubles as its own tap)
+
+## Releasing a new version
+
+1. Bump the version in both `build.sh` (`-V`) and `package.sh` (`VERSION=`), then
+   `./build.sh && ./package.sh`
+2. `shasum -a 256 IruDiag.pkg` and update `version`/`sha256` in `Casks/irudiag.rb` to match
+3. Commit, push, then `gh release create vX.Y.Z IruDiag.pkg` (or create the release and
+   upload `IruDiag.pkg` as an asset via the GitHub UI) - the cask's `url` expects it at
+   `releases/download/vX.Y.Z/IruDiag.pkg`
+4. `brew audit --cask` and `brew style --cask` against the tapped cask before calling it done
 
 ## Deploying via MDM
 
