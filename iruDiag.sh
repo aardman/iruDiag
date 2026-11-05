@@ -81,8 +81,6 @@ if [ $# -eq 0 ]; then
     echo "Cancel current install"
     echo "Initiate library installs"
     echo "Show logs (5 min)"
-    echo "----"
-    echo "Quit"
 else
     case "$1" in
         "Quick check in")
@@ -115,9 +113,6 @@ iru library" "Initiate Library Installs" sudo -n "$IRU" library
             ;;
         "Show logs (5 min)")
             run_and_show "Iru Logs (last 5 min)" sudo -n "$IRU" logs --last 300
-            ;;
-        "Quit")
-            echo "QUITAPP"
             ;;
     esac
 fi

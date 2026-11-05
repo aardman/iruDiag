@@ -1,6 +1,6 @@
 cask "irudiag" do
-  version "1.0.0"
-  sha256 "0bbd4956838c060b64a3ba86acbe54122f936102afdd5185c9ff3b7de70c41cd"
+  version "1.1.0"
+  sha256 "1387290df0476dfc8e907685ca762853049ac59979032582eeddb000103665c8"
 
   url "https://github.com/aardman/iruDiag/releases/download/v#{version}/IruDiag.pkg"
   name "IruDiag"

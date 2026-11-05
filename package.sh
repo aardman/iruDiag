@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 APP_NAME="IruDiag.app"
 INSTALL_DIR="/Applications"
 IDENTIFIER="org.aardman.IruDiag.pkg"
-VERSION="1.0.0"
+VERSION="1.1.0"
 OUTPUT="IruDiag.pkg"
 
 if [ ! -d "$APP_NAME" ]; then
@@ -34,7 +34,11 @@ chmod +x .pkgscripts/postinstall
 # installer silently installs THERE instead of --install-location. Disable
 # that so it always goes to the path we ask for.
 pkgbuild --analyze --root .pkgroot .component.plist
-/usr/libexec/PlistBuddy -c "Set :0:BundleIsRelocatable false" .component.plist
+# Depending on the macOS/pkgbuild version, the generated plist may or may
+# not already have this key - Delete-then-Add handles both cases (Set
+# fails outright if the key isn't already there).
+/usr/libexec/PlistBuddy -c "Delete :0:BundleIsRelocatable" .component.plist 2>/dev/null || true
+/usr/libexec/PlistBuddy -c "Add :0:BundleIsRelocatable bool false" .component.plist
 
 pkgbuild \
     --root .pkgroot \
