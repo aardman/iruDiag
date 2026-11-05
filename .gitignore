@@ -4,3 +4,4 @@ IruDiag.pkg
 .pkgroot/
 .pkgscripts/
 .component.plist
+.DS_Store
